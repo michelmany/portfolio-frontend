@@ -1,103 +1,256 @@
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
+import {ArrowRight, Github, Linkedin, Mail, FileText} from 'lucide-react';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    // TODO: This should be fetched from my API
+    const featuredProjects = [
+        {
+            id: '1',
+            title: 'E-Commerce Platform',
+            slug: 'e-commerce-platform',
+            description: 'A modern e-commerce platform built with Next.js and Stripe.',
+            technologies: ['Next.js', 'Tailwind CSS', 'Stripe', 'Prisma'],
+            images: [{url: '/images/project-1.jpg'}]
+        },
+        {
+            id: '2',
+            title: 'Health & Fitness App',
+            slug: 'health-fitness-app',
+            description: 'A mobile application for tracking health and fitness goals.',
+            technologies: ['React Native', 'Firebase', 'Redux'],
+            images: [{url: '/images/project-2.jpg'}]
+        },
+        {
+            id: '3',
+            title: 'Financial Dashboard',
+            slug: 'financial-dashboard',
+            description: 'Interactive dashboard for visualizing financial data.',
+            technologies: ['React', 'D3.js', 'Node.js', 'MongoDB'],
+            images: [{url: '/images/project-3.jpg'}]
+        }
+    ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    return (
+        <div className="flex flex-col gap-16 py-8">
+            {/* Hero Section */}
+            <section className="py-20 px-4 text-center">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="flex flex-col items-center gap-8">
+                        <div className="relative w-40 h-40 rounded-full overflow-hidden">
+                            <Image
+                                src="/images/profile.jpg"
+                                alt="Michel Many"
+                                fill
+                                style={{objectFit: 'cover'}}
+                                priority
+                            />
+                        </div>
+
+                        <div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                                Michel Many
+                            </h1>
+                            <h2 className="text-2xl md:text-3xl text-teal-600 dark:text-teal-400 mb-6">
+                                Full Stack Developer
+                            </h2>
+                            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8">
+                                I build modern, responsive, and user-friendly web applications with a focus on clean
+                                code and great user experiences.
+                            </p>
+
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Link
+                                    href="/portfolio"
+                                    className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-md transition-colors"
+                                >
+                                    <span>View Portfolio</span>
+                                    <ArrowRight className="h-4 w-4"/>
+                                </Link>
+                                <Link
+                                    href="/resume"
+                                    className="flex items-center gap-2 px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white rounded-md transition-colors"
+                                >
+                                    <FileText className="h-4 w-4"/>
+                                    <span>Download Resume</span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 mt-6">
+
+                            href="https://github.com/michelmany"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 rounded-full text-slate-600 hover:text-teal-600 hover:bg-slate-100
+                            dark:text-slate-300 dark:hover:text-teal-400 dark:hover:bg-slate-800 transition-colors"
+                            >
+                            <Github className="h-6 w-6"/>
+                        </a>
+
+                        href="https://linkedin.com/in/michelmany"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full text-slate-600 hover:text-teal-600 hover:bg-slate-100
+                        dark:text-slate-300 dark:hover:text-teal-400 dark:hover:bg-slate-800 transition-colors"
+                        >
+                        <Linkedin className="h-6 w-6"/>
+                    </a>
+
+                    href="mailto:contact@michelmany.com"
+                    className="p-3 rounded-full text-slate-600 hover:text-teal-600 hover:bg-slate-100
+                    dark:text-slate-300 dark:hover:text-teal-400 dark:hover:bg-slate-800 transition-colors"
+                    >
+                    <Mail className="h-6 w-6"/>
+                </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+</div>
+</div>
+</section>
+
+    {/* About Section */
+    }
+    <section className="py-16 bg-slate-50 dark:bg-slate-800/50">
+        <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">
+                    About Me
+                </h2>
+                <div className="prose dark:prose-invert prose-lg mx-auto">
+                    <p>
+                        I'm a Full Stack Developer with over 8 years of experience building web applications and digital
+                        products.
+                        My expertise spans across the entire development stack, from designing intuitive user interfaces
+                        to
+                        implementing robust backend systems.
+                    </p>
+                    <p>
+                        I specialize in modern JavaScript frameworks like React and Next.js, paired with Node.js
+                        backends
+                        and various database technologies. I'm passionate about creating clean, maintainable code and
+                        delivering
+                        exceptional user experiences.
+                    </p>
+                    <p>
+                        When I'm not coding, you can find me exploring new technologies, contributing to open-source
+                        projects,
+                        or sharing knowledge with the developer community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Skills Section */
+    }
+    <section className="py-16">
+        <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">
+                    Skills & Technologies
+                </h2>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {['JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB',
+                        'GraphQL', 'Tailwind CSS', 'Redux', 'Docker', 'AWS', 'Git', 'CI/CD', 'Responsive Design'].map((skill) => (
+                        <div
+                            key={skill}
+                            className="p-4 text-center bg-white dark:bg-slate-700 rounded-lg shadow-sm border border-slate-200 dark:border-slate-600"
+                        >
+                            <span className="text-slate-800 dark:text-slate-200">{skill}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Featured Projects Section */
+    }
+    <section className="py-16 bg-slate-50 dark:bg-slate-800/50">
+        <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex justify-between items-center mb-8">
+                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+                        Featured Projects
+                    </h2>
+                    <Link
+                        href="/portfolio"
+                        className="flex items-center gap-2 text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300"
+                    >
+                        <span>View All</span>
+                        <ArrowRight className="h-4 w-4"/>
+                    </Link>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {featuredProjects.map((project) => (
+                        <Link
+                            key={project.id}
+                            href={`/portfolio/${project.slug}`}
+                            className="group bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-slate-200 dark:border-slate-600"
+                        >
+                            <div className="relative h-48 w-full bg-slate-200 dark:bg-slate-600">
+                                <Image
+                                    src={project.images[0]?.url || '/images/placeholder.jpg'}
+                                    alt={project.title}
+                                    fill
+                                    style={{objectFit: 'cover'}}
+                                />
+                            </div>
+                            <div className="p-6">
+                                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-300 mb-4">
+                                    {project.description}
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.technologies.slice(0, 3).map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-3 py-1 text-xs bg-slate-100 dark:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-full"
+                                        >
+                          {tech}
+                        </span>
+                                    ))}
+                                    {project.technologies.length > 3 && (
+                                        <span
+                                            className="px-3 py-1 text-xs bg-slate-100 dark:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-full">
+                          +{project.technologies.length - 3}
+                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Contact Section */
+    }
+    <section className="py-16">
+        <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                    Let's Work Together
+                </h2>
+                <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+                    I'm currently available for freelance projects, full-time positions, and consulting opportunities.
+                </p>
+                <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-md transition-colors text-lg"
+                >
+                    <Mail className="h-5 w-5"/>
+                    <span>Get in Touch</span>
+                </Link>
+            </div>
+        </div>
+    </section>
+</div>
+)
+    ;
 }
